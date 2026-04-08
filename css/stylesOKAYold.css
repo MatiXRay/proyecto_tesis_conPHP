@@ -1,0 +1,245 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Color de fondo pastel */
+    color: #333; /* Color de texto */
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo de la caja */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+header, footer {
+    text-align: center;
+    background-color: #dde; /* Color de fondo pastel */
+    padding: 10px 0;
+}
+
+/* Estilos de encabezado */
+h1 {
+    margin-top: 0;
+    color: #666; /* Color de título */
+}
+
+/* Estilos de tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 0,5px solid black; /* Línea divisoria entre filas */
+
+}
+
+/* Estilos de enlaces */
+a {
+    color: #00f; /* Color de enlaces */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayar enlaces al pasar el ratón */
+}
+
+.notacata-button {
+    background-color: #FFC0CB; /* Color de fondo */
+    color: #000; /* Color del texto */
+    border: none; /* Eliminar borde */
+    padding: 10px 20px; /* Espacio interno */
+    margin-right: 10px; /* Espacio a la derecha */
+    margin-bottom: 10px; /* Espacio en la parte inferior */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+}
+
+
+.submit{
+    background-color: #FFC0CB; /* Color de fondo */
+    color: #000; /* Color del texto */
+    border: none; /* Eliminar borde */
+    padding: 10px 20px; /* Espacio interno */
+    margin-right: 10px; /* Espacio a la derecha */
+    margin-bottom: 10px; /* Espacio en la parte inferior */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+}
+
+.submit:hover {
+    background-color: #FF69B4; /* Cambiar color de fondo al pasar el ratón */
+}
+.batch-button {
+    background-color: #FFC0CB; /* Color de fondo */
+    color: #000; /* Color del texto */
+    border: none; /* Eliminar borde */
+    padding: 10px 20px; /* Espacio interno */
+    margin-right: 10px; /* Espacio a la derecha */
+    margin-bottom: 10px; /* Espacio en la parte inferior */
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+}
+
+.batch-button:hover {
+    background-color: #FF69B4; /* Cambiar color de fondo al pasar el ratón */
+}
+
+.notacata-button:hover {
+    background-color: #FF69B4; /* Cambiar color de fondo al pasar el ratón */
+}
+
+h1 {
+	text-align: center;
+}
+.notas-cata {
+	text-align: center;
+}
+
+.tabla-container {
+	overflow-x: auto; /* Mostrar barra de desplazamiento horizontal si es necesario */
+	max-width: 100%; /* Establecer el ancho máximo del contenedor */
+}
+
+.tabla-container table {
+	width: 100%; /* Establecer el ancho de la tabla al 100% del contenedor */
+	border-collapse: collapse; /* Colapsar bordes de celdas */
+}
+
+.table-container1 {
+    max-width: 100px; /* Establece el ancho máximo */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 10px; /* Añade un espaciado interno */
+}
+
+.tabla-container th,
+.tabla-container td {
+	padding: 8px; /* Ajustar el espacio interno de las celdas */
+	text-align: left; /* Alinear texto a la izquierda */
+	font-size: 14px; /* Tamaño de fuente */
+}
+
+	.tabla-container {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	.tabla-container th, .tabla-container td {
+		border: 1px solid #ccc;
+		padding: 8px;
+		text-align: center;
+	}
+	
+	/* Ajuste del ancho de los inputs */
+	.tabla-container input {
+		width: 100%; /* Ajusta el ancho de los inputs al 100% del contenedor */
+		box-sizing: border-box; /* Incluye el padding en el ancho total */
+	}
+
+
+input{
+	width: 70%; 
+	padding: 8px; /* Ajustar el espacio interno de las celdas */
+	text-align: left; /* Alinear texto a la izquierda */
+	font-size: 14px; /* Tamaño de fuente */
+	border: none;
+}
+
+table tr:first-child {
+  border-top: 0,5px solid black; /* Agregar borde superior a la primera fila */
+}
+
+.comentarios {
+	width: 100%; /* Ajusta el ancho al 100% */
+    word-wrap: break-word; 
+ }
+
+.no-border {
+        border: none;
+        background-color: #f0f0f0; /* Cambia el color de fondo aquí */
+        padding: 5px; /* Añade relleno para mejorar la apariencia */
+        width: 100%; /* Establece el ancho del input al 100% */
+        height: 100%;
+}
+
+/* Estilo para ocultar las flechas de incremento y decremento en el input de número */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0; /* Asegúrate de que el margen sea cero para eliminar cualquier espacio adicional */
+}
+
+input[type=number] {
+	-moz-appearance: textfield; /* Firefox necesita esta línea para ocultar las flechas */
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
+textarea{
+	width: 100%; /* Que el input ocupe todo el ancho */
+	box-sizing: border-box; /* Incluye el ancho del borde y el relleno en el tamaño total */
+	border: 1px solid #ccc; /* Borde alrededor del input */
+	padding: 5px; /* Espaciado interno para el texto dentro del input */
+}
+
+<style>
+    /* Estilo para alinear las etiquetas y los checkbox */
+    label {
+        display: inline-block;
+        width: 80px; /* Ancho de las etiquetas */
+    }
+
+    input[type="checkbox"] {
+        display: inline-block;
+        width: auto; /* Anchura automática para los checkbox */
+        margin-right: 10px; /* Espacio entre las etiquetas y los checkbox */
+    }
+
+select {
+    font-size: 16px;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    z-index: 9999;
+    display: none;
+}
+
+
+.volver-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.volver-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+

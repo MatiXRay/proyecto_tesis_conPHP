@@ -1,0 +1,650 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px; /* Ajuste el tamaño de fuente base */
+}
+
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #012c3a;
+    color: #fff;
+    padding: 2rem 1rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar .boton-cerrar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem; /* Reduzca el tamaño del botón cerrar */
+}
+
+.sidebar ul, .sidebar li p {
+    margin: 0;
+    padding: 0;
+    list-style: none inside;
+}
+
+.sidebar ul {
+    margin: 4rem auto;
+    display: block;
+    width: 80%;
+    min-width: 200px;
+}
+
+.sidebar a {
+    display: block;
+    font-size: 1.2rem; /* Reduzca el tamaño del texto del enlace */
+    color: #eee;
+    text-decoration: none;
+    padding: 0.5rem; /* Agregue un espacio entre los enlaces */
+    transition: background-color 0.3s, color 0.3s; /* Añadir transición al color de fondo y texto */
+}
+
+.sidebar a:hover {
+    color: #fff;
+    background-color: #f90;
+}
+
+h1 {
+    color: #f90;
+    font-size: 1.8rem; /* Reduzca el tamaño del encabezado */
+    font-weight: normal;
+}
+
+
+
+#contenido {
+    margin-left: 300px;
+    padding: 20px; /* Añade un relleno para asegurarte de que el contenido no se pegue a los bordes */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho y alto */
+}
+
+.abrir-cerrar {
+    color: #2E88C7;
+    font-size: 1rem;
+}
+
+#abrir {
+    
+}
+
+#cerrar {
+    display: none;
+}
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+
+/* Estilos para el formulario de búsqueda y el botón */
+#searchForm {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#searchForm label {
+    margin-right: 10px;
+}
+
+#searchForm input[type="text"],
+#searchForm input[type="submit"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#verDetalles {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#verDetalles:hover {
+    background-color: #0056b3;
+}
+
+#verNotas {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#verNotas:hover {
+    background-color: #0056b3;
+}
+
+#borrarFila {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#borrarFila:hover {
+    background-color: #0056b3;
+}
+
+
+#nuevoLote {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#nuevoLote:hover {
+    background-color: #0056b3;
+}
+
+#borrar {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#borrar:hover {
+    background-color: #0056b3;
+}
+
+#nuevo {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#nuevo:hover {
+    background-color: #0056b3;
+}
+
+#limpiar {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#limpiar:hover {
+    background-color: #0056b3;
+}
+
+#nuevoUser:hover {
+    background-color: #0056b3;
+}
+#borrarUser:hover {
+    background-color: #0056b3;
+}
+
+#cambiarPass:hover {
+    background-color: #0056b3;
+}
+
+#cambiarestado:hover {
+    background-color: #0056b3;
+}
+
+
+#nuevoUser{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#borrarUser{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#cambiarPass{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#cambiarestado{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+
+#verReceta {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#verReceta:hover {
+    background-color: #0056b3;
+}
+
+nuevo {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+nuevo:hover {
+    background-color: #0056b3;
+}
+#verDetalle {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+#verDetalle:hover {
+    background-color: #0056b3;
+}
+
+verReceta {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+verReceta:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el encabezado fijo de la tabla */
+.styled-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.styled-table th {
+    background-color: #f2f2f2;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table th {
+    background-color: #f2f2f2;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+/* Ajustar el ancho de las columnas */
+.styled-table th:nth-child(1),
+.styled-table td:nth-child(1) {
+    width: 10px; /* Ajusta el ancho según tus necesidades */
+}
+
+/* Ajustar el ancho de las columnas */
+.styled-table th:nth-child(2),
+.styled-table td:nth-child(2) {
+    width: 250px; /* Ajusta el ancho según tus necesidades */
+}
+
+.styled-table th:nth-child(4),
+.styled-table td:nth-child(4) {
+    width: 500px; /* Ajusta el ancho según tus necesidades */
+}
+
+th a {
+	text-decoration: none;  /* Quital el subrayado */
+	color: black;           /* Cambia el color del texto a negro */
+}
+
+th a:hover {
+	color: gray;            /* Cambia el color del texto al pasar el cursor sobre el enlace */
+}
+
+/* Estilos específicos para la tabla de recetas */
+.styled-table.recetas th:nth-child(3),
+.styled-table.recetas td:nth-child(3),
+.styled-table.recetas th:nth-child(4),
+.styled-table.recetas td:nth-child(4),
+.styled-table.recetas th:nth-child(5),
+.styled-table.recetas td:nth-child(5) {
+    width: 50px; /* Ajusta este valor según tus necesidades */
+    max-width: 50px; /* Asegura que no se exceda este ancho */
+    overflow: hidden; /* Evita que el contenido se desborde */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es demasiado largo */
+    white-space: nowrap; /* Evita saltos de línea */
+}
+
+.styled-table.recetas th:nth-child(2),
+.styled-table.recetas td:nth-child(2) {
+    width: 150px; /* Ajusta este valor según tus necesidades */
+}
+
+.styled-table.recetas th:nth-child(7),
+.styled-table.recetas td:nth-child(7) {
+    width: 600px; /* Ajusta este valor según tus necesidades */
+    max-width: 600px; /* Asegura que no se exceda este ancho */
+    overflow: hidden; /* Evita que el contenido se desborde */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es demasiado largo */
+    white-space: nowrap; /* Evita saltos de línea */
+}
+
+
+/* Ajustes adicionales si es necesario */
+.sticky-header tr:first-child th {
+    position: sticky;
+    top: 0;
+}
+
+.styled-table.parametrosagua thead th,
+.styled-table.parametrosagua tbody td {
+    padding: 8px 12px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+    overflow: hidden; /* Oculta el contenido que excede el ancho */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto que excede el ancho */
+}
+
+.styled-table.parametrosagua thead th.small-columnh2o,
+.styled-table.parametrosagua tbody td.small-columnh2o {
+    width: 45px; /* Ancho específico para la columna */
+    max-width: 45px; /* Ancho máximo */
+    overflow: hidden; /* Oculta el contenido que excede el ancho */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto que excede el ancho */
+	font-size: 13px; /* Tamaño de la fuente que desees */
+
+}
+
+.styled-table.parametrosagua thead th.great-columnh2o,
+.styled-table.parametrosagua tbody td.great-columnh2o {
+    width: 70px; /* Ancho específico para la columna */
+    max-width: 70px; /* Ancho máximo */
+    overflow: hidden; /* Oculta el contenido que excede el ancho */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto que excede el ancho */
+	font-size: 13px; /* Tamaño de la fuente que desees */
+
+}
+
+
+.wrapperloggedin {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+.welcome {
+	font-size: 16px;
+	margin-right: 20px;
+	position: relative;
+	cursor: pointer;
+}
+
+.welcome span {
+	color: #333;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.welcome span:hover {
+	color: #007BFF;
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: 1000;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+	min-width: 160px;
+}
+
+
+
+.dropdown-item {
+	padding: 10px 15px;
+	text-decoration: none;
+	display: block;
+	color: #333;
+	transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+	background-color: #f5f5f5;
+}
+
+.logo img {
+	max-width: 100px;
+	height: auto;
+}
+
+
+.modal_user {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    width: 500px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-group {
+    text-align: right;
+}
+
+.btn-confirm {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el contenedor */
+.containercata {
+	position: relative;
+}
+
+/* Estilos para el botón */
+.custom-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 10px 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+	background-color: #45a049;
+}
+
+.containercata {
+	display: flex;
+	justify-content: space-between;
+	align-items: right;
+	margin-bottom: 20px; /* Espacio entre el h1 y el botón */
+}
+
+/* Alinear columnas numéricas de la tabla de recetas */
+.styled-table.recetas td:nth-child(4),
+.styled-table.recetas td:nth-child(5),
+.styled-table.recetas td:nth-child(6),
+.styled-table.recetas td:nth-child(7) {
+    text-align: left;
+}

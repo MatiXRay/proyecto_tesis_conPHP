@@ -1,0 +1,107 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        fieldset {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        legend {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+	  input[type="number"] {
+				width: 50px; /* Aumentar el ancho del input */
+				height: 40px; /* Aumentar la altura del input */
+				padding: 10px; /* Aumentar el padding */
+				margin-top: 5px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				font-weight: bold; /* Texto en negrita */
+				font-size: 30px; /* Texto en negrita */
+			}
+        
+        .atributos {
+            margin-bottom: 10px;
+        }
+        
+        .atributos div {
+            margin-bottom: 5px;
+        }
+
+        /* Estilos para checkboxes */
+        .atributos input[type="checkbox"] {
+            display: none; /* Ocultar los checkboxes */
+        }
+
+        .atributos label {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #f0f0f0; /* Color de fondo */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .atributos input[type="checkbox"]:checked + label {
+            background-color: #a0d8ef; /* Color de fondo cuando está seleccionado */
+        }
+
+        /* Estilos para la tabla de comentarios y puntaje */
+        #comentario-puntaje td {
+            padding-bottom: 10px; /* Añadir espacio entre las filas */
+        }
+
+        #comentario-puntaje input[type="number"],
+        #comentario-puntaje textarea {
+            width: calc(100% - 20px); /* Ajustar el ancho de los inputs */
+        }
+
+        /* Añadir margen inferior a las etiquetas th del encabezado de la tabla */
+        th {
+            margin-bottom: 10px;
+        }
+                /* Ajuste de alineación vertical de las celdas */
+        th,
+        
+        td {
+            vertical-align: center; /* Alinear contenido al principio de las celdas */
+			padding: 10px; /* Aumentar el padding para aumentar el tamaño de la celda */
+        }
+
+        /* Alineación izquierda de los títulos de columna */
+        th {
+            text-align: left;
+        }

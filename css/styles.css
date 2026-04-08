@@ -1,0 +1,207 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Color de fondo pastel */
+    color: #333; /* Color de texto */
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo de la caja */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.containerlotes {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo de la caja */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+header, footer {
+    text-align: center;
+    background-color: #dde; /* Color de fondo pastel */
+    padding: 10px 0;
+}
+
+h1 {
+    margin-top: 0;
+    color: #666; /* Color de título */
+    text-align: center;
+}
+
+/* Estilos de tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid black; /* Línea divisoria entre filas */
+}
+
+table tr:first-child {
+    border-top: 1px solid black; /* Agregar borde superior a la primera fila */
+}
+
+/* Estilos de enlaces */
+a {
+    color: #00f; /* Color de enlaces */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayar enlaces al pasar el ratón */
+}
+
+/* Botones */
+.notacata-button, .submit, .batch-button {
+    background-color: #FFC0CB;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notacata-button:hover, .submit:hover, .batch-button:hover {
+    background-color: #FF69B4;
+}
+
+/* Tablas responsivas */
+.tabla-container {
+    overflow-x: auto;
+}
+
+.tabla-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-containerlog{
+    width: 50%;
+    border-collapse: collapse;
+    
+}
+.tabla-container th,
+.tabla-container td {
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+/* Inputs */
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* Otros */
+.no-border {
+    border: none;
+    background-color: #f0f0f0;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    z-index: 9999;
+    display: none;
+}
+
+.volver-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.volver-button:hover {
+    background-color: #0056b3;
+}
+/* Estilo para los inputs más pequeños */
+.input-small {
+    width: 100px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.input-small {
+    width: 80px; /* Tamaño para los inputs más pequeños */
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.input-small[type="date"] {
+	width: 200px;
+}
+
+/* Aplicar ancho fijo a la primera columna */
+.tabla-batchs td:first-child, .tabla-batchs th:first-child {
+	width: 150px; /* Ajusta el ancho fijo */
+}
+/* Ajustar el ancho de las otras columnas */
+.tabla-batchs td:not(:first-child), .tabla-batchs th:not(:first-child) {
+	width: auto;
+}
+
+.tabla-containerpv table {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+.editable {
+	cursor: pointer;
+	border: 1px solid transparent;
+	padding: 5px;
+}
+.editable:hover {
+	border: 1px solid #ccc;
+}
+.edit-mode {
+	border: 1px solid #ccc;
+	padding: 5px;
+}

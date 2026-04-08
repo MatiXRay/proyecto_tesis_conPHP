@@ -1,0 +1,70 @@
+fieldset {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para los checkboxes dentro de la tabla */
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Estilo para los checkboxes dentro de los divs dentro de la tabla */
+div.atributos input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Estilo para los radios dentro de los divs dentro de la tabla */
+div.atributos input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Estilo para los radios y labels dentro de los divs dentro de la tabla */
+div.atributos input[type="radio"] {
+  margin: 0; /* Elimina el margen exterior */
+  display: inline-block; /* Hace que los radios se muestren en línea */
+  vertical-align: left; /* Alinea verticalmente con el texto */
+}
+
+div.atributos label {
+  margin: 0 5px; /* Ajusta el margen entre los radios y los labels */
+}
+
+/* Estilo personalizado para los radios */
+.custom-radio input[type="radio"] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 12px; /* Ancho del cuadrado */
+	height: 12px; /* Altura del cuadrado */
+	border: 1px solid #333; /* Grosor y color del borde */
+	border-radius: 3px; /* Borde redondeado */
+	outline: none; /* Elimina el contorno al hacer clic */
+}
+
+/* Estilo para cuando el radio está seleccionado */
+.custom-radio input[type="radio"]:checked {
+	background-color: #333; /* Cambia el fondo al estar seleccionado */
+}
+
