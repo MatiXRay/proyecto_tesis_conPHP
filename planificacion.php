@@ -37,8 +37,11 @@ try {
 
     $tareas_map = [];
     if ($lotes) {
-        $ids   = implode(',', array_map(fn($l) => (int)$l['id'], $lotes));
-        $rows  = $pdo->query("SELECT * FROM planificacion_tareas WHERE plan_id IN ($ids) ORDER BY fecha_estimada, orden")->fetchAll();
+        $ids_arr      = array_map(fn($l) => (int)$l['id'], $lotes);
+        $placeholders = implode(',', array_fill(0, count($ids_arr), '?'));
+        $stmt_t       = $pdo->prepare("SELECT * FROM planificacion_tareas WHERE plan_id IN ($placeholders) ORDER BY fecha_estimada, orden");
+        $stmt_t->execute($ids_arr);
+        $rows = $stmt_t->fetchAll();
         foreach ($rows as $t) $tareas_map[(int)$t['plan_id']][] = $t;
     }
 

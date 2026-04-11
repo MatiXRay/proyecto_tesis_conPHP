@@ -1,9 +1,14 @@
 <?php
 // LOS DETALLES DE UN NUEVO LOTE AÑADIDO SE GUARDAN AQUI
 
+require_once 'config.php';
+require_once 'auth.php';
+requireLogin();
+if (isTaster()) { header('Location: panel_cata'); exit; }
+verifyCsrf();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	
+
 	require_once 'conexion.php';
 
 	if ($conn->connect_error) {
