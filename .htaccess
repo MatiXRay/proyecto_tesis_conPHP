@@ -76,3 +76,9 @@ RewriteRule ^planilla_cata$ planilla_cata.php [L]
 RewriteRule ^detalle_planilla$ detalle_planilla_cata.php [L]
 RewriteRule ^logout$ logout.php [L]
 RewriteRule ^comparar_fermentacion$ comparar_fermentacion.php [L]
+
+# ── Bloquear archivos legacy con vulnerabilidades ────────────────────────────
+<FilesMatch "^(index|borrador|agregar_nota_cata|guardar_comentario|notas_cata|detalleEnvasado|inicioListado|popup_batch|detella_receta|detalleloteOKold|detalleloteOKold1)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

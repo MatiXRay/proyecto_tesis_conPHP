@@ -1,9 +1,17 @@
+<?php
+require_once 'config.php';
+require_once 'auth.php';
+requireLogin();
+if (isTaster()) { header('Location: panel_cata'); exit; }
+$csrf_token = getCsrfToken();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir Nuevo Lúpulo</title>
+    <title>Añadir Nuevo Fermentador</title>
+    <script>const CSRF_TOKEN = '<?= e($csrf_token) ?>';</script>
     <style>
         /* Estilos generales */
         body {
@@ -125,7 +133,7 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `tabla=${encodeURIComponent(tabla)}&nombre=${encodeURIComponent(nombre)}&marca=${encodeURIComponent(marca)}`,
+                body: `tabla=${encodeURIComponent(tabla)}&nombre=${encodeURIComponent(nombre)}&marca=${encodeURIComponent(marca)}&csrf_token=${encodeURIComponent(CSRF_TOKEN)}`,
             })
             .then(response => response.json())
             .then(data => {

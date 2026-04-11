@@ -411,11 +411,10 @@ function confirmarCambioPass() {
   if (newPass.length < 8) { alert('La contraseña debe tener al menos 8 caracteres.'); return; }
 
   fetch('cambiar_contrasena', {
-    method:'POST', headers:{'Content-Type':'application/json'},
+    method:'POST', headers:{'Content-Type':'application/json', 'X-CSRF-TOKEN': CSRF},
     body: JSON.stringify({
       adminId: ADMIN_ID, adminPassword: adminPass,
-      userId: u.id, newPassword: newPass,
-      csrf_token: CSRF
+      userId: u.id, newPassword: newPass
     })
   }).then(r=>r.json()).then(d=>{
     if (d.success) { alert('Contraseña cambiada con éxito.'); cerrarPass(); }

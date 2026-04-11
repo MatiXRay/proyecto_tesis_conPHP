@@ -1,6 +1,12 @@
 <?php
+require_once 'config.php';
+require_once 'auth.php';
+requireLogin();
+requireRole([1]);
+verifyCsrf(); // lee X-CSRF-TOKEN del header
+
 // Conexión a la base de datos
-require 'conexion.php';
+require_once 'conexion.php';
 
 // Obtener datos del cuerpo de la solicitud POST
 $data = json_decode(file_get_contents("php://input"));
