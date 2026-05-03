@@ -11,11 +11,9 @@ require_once 'conexion.php';
 $id_lote = getIntParam('id') ?? getIntParam('id_lote');
 if (!$id_lote) { header('Location: lotes'); exit; }
 $origen = in_array($_GET['origen'] ?? '', ['panel_sensorial','panel_cata','detalles_lote']) ? $_GET['origen'] : null;
-$volver_url = match($origen) {
-    'panel_sensorial' => 'panel_sensorial',
-    'panel_cata'      => 'panel_cata',
-    default           => isTaster() ? 'panel_cata' : 'detalles_lote?id='.$id_lote
-};
+if ($origen === 'panel_sensorial')     $volver_url = 'panel_sensorial';
+elseif ($origen === 'panel_cata')     $volver_url = 'panel_cata';
+else                                  $volver_url = isTaster() ? 'panel_cata' : 'detalles_lote?id='.$id_lote;
 
 try {
     $pdo  = getPDO();
@@ -132,7 +130,7 @@ $menu_activo = 'lotes';
   <!-- Header sin sidebar -->
   <div class="cata-header">
     <div>
-      <div class="cata-brand">Bialystok Brewing Co · Análisis Sensorial</div>
+      <div class="cata-brand">BRAUMEISTER · Análisis Sensorial</div>
       <h1 class="cata-title"><?= e(strtoupper($lote['numero_lote'])) ?> — <?= e($lote['estilo'] ?? '—') ?></h1>
       <div class="cata-meta">
         <?php if ($lote['ibu']): ?><span><?= e($lote['ibu']) ?> IBU</span><?php endif; ?>

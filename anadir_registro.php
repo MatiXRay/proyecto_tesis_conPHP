@@ -63,6 +63,6 @@ try {
     echo json_encode(['success' => true, 'id' => (int) $pdo->lastInsertId()]);
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok anadir_registro] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER anadir_registro] ' . $ex->getMessage());
     echo json_encode(['success' => false, 'message' => 'Error al guardar.']);
 }

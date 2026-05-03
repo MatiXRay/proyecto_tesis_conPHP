@@ -46,7 +46,7 @@ try {
     $total_tasters = (int) $pdo->query("SELECT COUNT(*) FROM users WHERE rol_id = 3")->fetchColumn();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok panel_sensorial] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER panel_sensorial] ' . $ex->getMessage());
     $lotes = [];
     $total = $total_paginas = 0;
     $total_catas = $total_tasters = 0;
@@ -57,7 +57,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Sensorial · Bialystok Brewing</title>
+  <title>Panel Sensorial · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -129,7 +129,7 @@ try {
             <td style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--text-secondary)">
               <?= e(date('d/m/Y', strtotime($lote['fecha_elaboracion']))) ?>
             </td>
-            <td><span class="badge badge-amber"><?= e(strtoupper($lote['estilo'])) ?></span></td>
+            <td><span class="badge <?= badgeEstilo($lote['estilo']) ?>"><?= e(strtoupper($lote['estilo'])) ?></span></td>
             <td style="color:var(--text-muted);font-size:.8rem"><?= e($lote['comentarios'] ?: '—') ?></td>
             <td>
               <a href="planilla_cata?id=<?= (int)$lote['id'] ?>&origen=panel_sensorial" class="btn btn-ghost btn-sm"

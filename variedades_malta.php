@@ -29,7 +29,7 @@ try {
     $stmt->execute([$like, $like]);
     $maltas = $stmt->fetchAll();
 } catch (PDOException $ex) {
-    error_log('[Bialystok maltas] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER maltas] ' . $ex->getMessage());
     $maltas = []; $total = $total_paginas = 0;
 }
 ?>
@@ -38,7 +38,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maltas · Bialystok Brewing</title>
+  <title>Maltas · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">

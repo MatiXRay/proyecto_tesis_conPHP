@@ -64,7 +64,7 @@ try {
     $lotes = $lotes->fetchAll();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok detalle_receta] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER detalle_receta] ' . $ex->getMessage());
     header('Location: recetas'); exit;
 }
 ?>
@@ -73,7 +73,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($receta['nombre']) ?> · Bialystok Brewing</title>
+  <title><?= e($receta['nombre']) ?> · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">

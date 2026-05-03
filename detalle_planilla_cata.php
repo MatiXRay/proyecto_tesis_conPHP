@@ -64,7 +64,7 @@ try {
     $notas = $stmt->fetchAll();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok detalle_planilla_cata] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER detalle_planilla_cata] ' . $ex->getMessage());
     header('Location: panel_sensorial?error=error_db');
     exit;
 }
@@ -84,7 +84,7 @@ if ($notas) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cata · <?= e(strtoupper($lote['numero_lote'] ?? '')) ?> · Bialystok Brewing</title>
+  <title>Cata · <?= e(strtoupper($lote['numero_lote'] ?? '')) ?> · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -118,7 +118,7 @@ if ($notas) {
 <div class="cata-wrap">
   <div class="cata-header">
     <div>
-      <div class="cata-brand">Bialystok Brewing Co · Análisis Sensorial</div>
+      <div class="cata-brand">BRAUMEISTER · Análisis Sensorial</div>
       <h1 class="cata-title"><?= e(strtoupper($lote['numero_lote'] ?? '')) ?> — <?= e($lote['estilo'] ?? '—') ?></h1>
       <div class="cata-meta">
         <span><?= e(date('d/m/Y', strtotime($lote['fecha_elaboracion']))) ?></span>
@@ -317,8 +317,10 @@ if ($notas) {
             preg_match('/^(.*?):(\d)$/', $falla, $m);
             $nombre = $m[1] ?? $falla;
             $sev    = (int)($m[2] ?? 1);
-            $color  = match($sev) { 1=>'rgba(74,170,74,.2);color:#4aaa4a', 2=>'rgba(200,146,42,.25);color:#c8922a', 3=>'rgba(217,96,96,.3);color:#d96060', default=>'rgba(100,100,100,.2);color:#888' };
-            $label  = match($sev) { 1=>'Leve', 2=>'Moderado', 3=>'Marcado', default=>'?' };
+            $colores = [1=>'rgba(74,170,74,.2);color:#4aaa4a', 2=>'rgba(200,146,42,.25);color:#c8922a', 3=>'rgba(217,96,96,.3);color:#d96060'];
+            $color   = isset($colores[$sev]) ? $colores[$sev] : 'rgba(100,100,100,.2);color:#888';
+            $labels  = [1=>'Leve', 2=>'Moderado', 3=>'Marcado'];
+            $label   = isset($labels[$sev]) ? $labels[$sev] : '?';
             echo "<span style=\"font-size:.72rem;padding:.2rem .55rem;border-radius:99px;background:$color;font-weight:500\">$nombre ($label)</span>";
           }
         ?>

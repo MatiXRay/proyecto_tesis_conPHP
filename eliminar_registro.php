@@ -127,6 +127,6 @@ try {
     if (isset($pdo) && $pdo->inTransaction()) {
         $pdo->rollBack();
     }
-    error_log('[Bialystok] Error al eliminar registro: ' . $e->getMessage());
+    error_log('[BRAUMEISTER] Error al eliminar registro: ' . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'Error al eliminar el registro.']);
 }

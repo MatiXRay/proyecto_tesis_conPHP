@@ -17,7 +17,7 @@ try {
     $lupulos = $pdo->query("SELECT id, nombre, marca FROM variedades_lupulo ORDER BY nombre")->fetchAll();
     $cepas   = $pdo->query("SELECT id, cepa, marca FROM cepas_levadura ORDER BY cepa")->fetchAll();
 } catch (PDOException $ex) {
-    error_log('[Bialystok anadir_receta] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER anadir_receta] ' . $ex->getMessage());
     $maltas = $lupulos = $cepas = [];
 }
 
@@ -29,7 +29,7 @@ $lupulos_json = json_encode(array_map(fn($l) => ['id'=>(int)$l['id'],'label'=>$l
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nueva receta · Bialystok Brewing</title>
+  <title>Nueva receta · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">

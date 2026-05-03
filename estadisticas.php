@@ -197,7 +197,7 @@ try {
     $pct_ocupacion = $total_fvs > 0 ? round(($fvs_ocupados / $total_fvs) * 100) : 0;
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok estadisticas] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER estadisticas] ' . $ex->getMessage());
     $estilos = $litros = $merma = $tiempos = $rendimiento = $por_mes = $por_mes_estilo = $catas = $fallas_top = [];
     $meses_estilos = []; $estilos_vistos = []; $meses_ordered = [];
     $kpis = null;
@@ -214,7 +214,7 @@ function fmtNum(?float $n, int $dec = 1): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estadísticas · Bialystok Brewing</title>
+  <title>Estadísticas · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -263,7 +263,7 @@ function fmtNum(?float $n, int $dec = 1): string {
   <div class="page-header fade-in">
     <div>
       <h1>Estadísticas</h1>
-      <p class="page-subtitle">Producción · Calidad · Rendimiento · Bialystok Brewing Co</p>
+      <p class="page-subtitle">Producción · Calidad · Rendimiento · BRAUMEISTER</p>
     </div>
   </div>
 

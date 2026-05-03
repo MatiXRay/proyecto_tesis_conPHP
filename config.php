@@ -8,10 +8,12 @@
  */
 
 // ── Base de datos ─────────────────────────────────────────
-define('DB_HOST',     'localhost');
-define('DB_USER',     'c2651024_fabrica');   // <-- reemplazá con tu usuario real
-define('DB_PASS',     'TU_PASSWORD_AQUI');   // <-- reemplazá con tu password real
-define('DB_NAME',     'c2651024_fabrica');   // <-- reemplazá con tu DB real
+// Para Docker local: host='db', user='fabrica', pass='fabrica', db='fabrica'
+// Para producción Ferozo: host='localhost', user='c2651024_fabrica', pass=<real>, db='c2651024_fabrica'
+define('DB_HOST',     getenv('DB_HOST') ?: 'localhost');
+define('DB_USER',     getenv('DB_USER') ?: 'c2651024_fabrica');
+define('DB_PASS',     getenv('DB_PASS') ?: 'TU_PASSWORD_AQUI');
+define('DB_NAME',     getenv('DB_NAME') ?: 'c2651024_fabrica');
 define('DB_CHARSET',  'utf8mb4');
 
 // ── Seguridad de sesión ───────────────────────────────────

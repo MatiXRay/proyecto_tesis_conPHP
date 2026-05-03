@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /bialy/
+RewriteBase /braumeister/
 RewriteRule ^$ /inicio [L]
 RewriteRule ^login$ login.php [L]
 RewriteRule ^panel_cata$ panel_cata.php [L]

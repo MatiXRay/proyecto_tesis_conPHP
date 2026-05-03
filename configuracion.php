@@ -58,7 +58,7 @@ try {
     $alertas = $pdo->query("SELECT * FROM alertas ORDER BY id")->fetchAll();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok config] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER config] ' . $ex->getMessage());
     $usuarios = $roles = $estilos = [];
     $total = $total_paginas = 0;
     $creacion_usuarios = 0;
@@ -69,7 +69,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Configuración · Bialystok Brewing</title>
+  <title>Configuración · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -241,12 +241,15 @@ try {
                   $dias_rest = (int)(new DateTime())->diff($dt_p)->format('%r%a');
                   $estado = $dias_rest < 0 ? 'vencida' : ($dias_rest <= 30 ? 'proxima' : 'ok');
               }
-              $badge = match($estado) {
-                'vencida' => '<span class="badge" style="background:rgba(180,50,50,.2);color:#e06060;border-color:rgba(180,50,50,.3)">Vencida</span>',
-                'proxima' => '<span class="badge badge-amber">Próxima</span>',
-                'ok'      => '<span class="badge" style="background:rgba(50,150,50,.15);color:#4aaa4a;border-color:rgba(50,150,50,.25)">Al día</span>',
-                default   => '<span class="badge badge-muted">Sin fecha</span>',
-              };
+              if ($estado === 'vencida') {
+                  $badge = '<span class="badge" style="background:rgba(180,50,50,.2);color:#e06060;border-color:rgba(180,50,50,.3)">Vencida</span>';
+              } elseif ($estado === 'proxima') {
+                  $badge = '<span class="badge badge-amber">Próxima</span>';
+              } elseif ($estado === 'ok') {
+                  $badge = '<span class="badge" style="background:rgba(50,150,50,.15);color:#4aaa4a;border-color:rgba(50,150,50,.25)">Al día</span>';
+              } else {
+                  $badge = '<span class="badge badge-muted">Sin fecha</span>';
+              }
             ?>
             <tr id="alerta-row-<?= (int)$al['id'] ?>">
               <td>

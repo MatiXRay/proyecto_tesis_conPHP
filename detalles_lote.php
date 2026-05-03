@@ -114,7 +114,7 @@ try {
     $reporteOSMO = $lote['reporteOSMO'] ?? null;
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok detalle_lote] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER detalle_lote] ' . $ex->getMessage());
     header('Location: lotes?error=' . urlencode('Error al cargar el lote.'));
     exit;
 }
@@ -128,7 +128,7 @@ $dia_envasado = (!empty($lote['dia_envasado']) && $lote['dia_envasado'] !== '000
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lote <?= e(strtoupper($lote['numero_lote'] ?? '')) ?> · Bialystok Brewing</title>
+  <title>Lote <?= e(strtoupper($lote['numero_lote'] ?? '')) ?> · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">

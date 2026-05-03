@@ -59,6 +59,6 @@ try {
     }
 
 } catch (PDOException $e) {
-    error_log('[Bialystok] Error al eliminar nota de cata: ' . $e->getMessage());
+    error_log('[BRAUMEISTER] Error al eliminar nota de cata: ' . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'Error al eliminar la nota.']);
 }

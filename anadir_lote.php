@@ -24,7 +24,7 @@ try {
         "SELECT id, nombre FROM estilos_cerveza ORDER BY nombre"
     )->fetchAll();
 } catch (PDOException $ex) {
-    error_log('[Bialystok anadir_lote] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER anadir_lote] ' . $ex->getMessage());
     $estilos = [];
 }
 ?>
@@ -33,7 +33,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuevo lote · Bialystok Brewing</title>
+  <title>Nuevo lote · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">

@@ -137,3 +137,19 @@ function getStringParam(string $key, string $source = 'GET', int $maxLen = 500):
 function csrfField(): string {
     return '<input type="hidden" name="csrf_token" value="' . e(getCsrfToken()) . '">';
 }
+
+// ── Clase CSS de badge según estilo de cerveza ───────────────────────────────
+function badgeEstilo(string $nombre): string {
+    $n = strtolower($nombre);
+    if (strpos($n, 'ipa') !== false || strpos($n, 'india pale') !== false)  return 'badge-estilo-ipa';
+    if (strpos($n, 'stout') !== false)                                       return 'badge-estilo-stout';
+    if (strpos($n, 'porter') !== false)                                      return 'badge-estilo-porter';
+    if (strpos($n, 'lager') !== false || strpos($n, 'pilsen') !== false || strpos($n, 'pilsner') !== false) return 'badge-estilo-lager';
+    if (strpos($n, 'pale ale') !== false)                                    return 'badge-estilo-pale';
+    if (strpos($n, 'wheat') !== false || strpos($n, 'trigo') !== false || strpos($n, 'weizen') !== false)   return 'badge-estilo-wheat';
+    if (strpos($n, 'sour') !== false || strpos($n, 'acida') !== false || strpos($n, 'ácida') !== false)     return 'badge-estilo-sour';
+    if (strpos($n, 'red') !== false || strpos($n, 'roja') !== false || strpos($n, 'amber') !== false)       return 'badge-estilo-red';
+    if (strpos($n, 'saison') !== false || strpos($n, 'belg') !== false)     return 'badge-estilo-saison';
+    if (strpos($n, 'barley') !== false || strpos($n, 'imperial') !== false) return 'badge-estilo-imperial';
+    return 'badge-estilo-default';
+}

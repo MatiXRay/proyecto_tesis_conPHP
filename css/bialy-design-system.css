@@ -25,10 +25,10 @@
   --amber-500:  #368a36;
   --amber-600:  #256025;
 
-  /* Texto — crema cálida, menos contraste que blanco puro */
-  --text-primary:   #e8e0cc;
-  --text-secondary: #a09880;
-  --text-muted:     #6b6150;
+  /* Texto — alto contraste sobre fondo oscuro */
+  --text-primary:   #f0ece4;
+  --text-secondary: #d0c8b8;
+  --text-muted:     #a09888;
   --text-amber:     #6dbe6d;
   --text-on-amber:  #0d1f0d;
 
@@ -57,75 +57,99 @@
   --transition: 0.18s ease;
 }
 
-/* ── TEMA CLARO — Camel / Cervecería diurna ──────────────── */
+/* ── TEMA CLARO — Blanco + Verde + Marrón cervecero ─────── */
 [data-theme="light"] {
-  --color-bg:          #f2ece0;
-  --color-surface:     #e8e0ce;
-  --color-surface-2:   #ddd4c0;
-  --color-surface-3:   #d0c8b2;
-  --color-border:      rgba(80,60,20,0.14);
-  --color-border-md:   rgba(80,60,20,0.25);
+  --color-bg:          #ffffff;
+  --color-surface:     #ffffff;
+  --color-surface-2:   #f5f5f5;       /* gris neutro — header de tablas */
+  --color-surface-3:   #eeeeee;       /* gris claro — inputs */
+  --color-hover-cream: #f8f5f0;
+  --color-border:      rgba(0,0,0,0.08);
+  --color-border-md:   rgba(0,0,0,0.15);
 
-  /* Texto — oscuro y legible */
-  --text-primary:   #1e1608;
-  --text-secondary: #4a3820;
-  --text-muted:     #7a6040;
-  --text-amber:     #1e6e1e;    /* verde más oscuro para legibilidad */
-  --text-on-amber:  #fff;
+  /* Texto — oscuro con alto contraste */
+  --text-primary:   #111111;          /* negro casi puro — contraste 18:1 sobre blanco */
+  --text-secondary: #2a1f14;          /* marrón muy oscuro — contraste 13:1 */
+  --text-muted:     #5a4030;          /* marrón medio — contraste 6.5:1, supera AA */
+  --text-amber:     #1e6e1e;          /* verde oscuro para acentos de acción */
+  --text-on-amber:  #ffffff;
 
-  --color-success:  #1e6e1e;
-  --color-danger:   #a02020;
-  --color-warning:  #8a5010;
-  --color-info:     #1a50a0;
+  --color-success:  #2e7a2e;
+  --color-danger:   #b83232;
+  --color-warning:  #a06010;          /* ámbar tostado — color lúpulo */
+  --color-info:     #1a52a8;
 
-  --sidebar-bg:     #ddd4c0;
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.12);
-  --shadow-md:  0 4px 16px rgba(0,0,0,0.15);
-  --shadow-lg:  0 8px 32px rgba(0,0,0,0.18);
+  --sidebar-bg:     #253532;
+  --shadow-sm:  0 1px 4px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.16);
 
-  /* Acento verde — más oscuro para contraste sobre fondo claro */
-  --amber-400:  #1e7a1e;
-  --amber-500:  #166016;
+  --amber-400:  #3a9e3a;
+  --amber-500:  #2e7a2e;
 }
 
 /* Ajustes específicos para el tema claro */
 [data-theme="light"] body { color: var(--text-primary); }
 [data-theme="light"] .sidebar { border-right: 1px solid var(--color-border-md); }
-[data-theme="light"] .card    { box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+[data-theme="light"] .card    { background: #ffffff !important; box-shadow: var(--shadow-sm) !important; border: 1px solid rgba(0,0,0,0.10) !important; }
+[data-theme="light"] .stat-card { background: #ffffff !important; box-shadow: var(--shadow-sm) !important; border: 1px solid rgba(0,0,0,0.10) !important; }
 [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea {
   color: var(--text-primary) !important;
-  background: var(--color-surface-3) !important;
+  background: var(--color-surface) !important;
   border-color: var(--color-border-md) !important;
 }
-[data-theme="light"] table th { background: var(--color-surface-2) !important; color: var(--text-secondary) !important; }
-[data-theme="light"] table td { color: var(--text-primary) !important; }
-[data-theme="light"] .sidebar { background: #e8dfc8 !important; }
-[data-theme="light"] .menu-item a { color: #1a1208 !important; font-weight: 500; opacity: 1 !important; }
-[data-theme="light"] .menu-item a:hover { background: rgba(30,110,30,0.15) !important; color: #1a1208 !important; }
-[data-theme="light"] .menu-item a.active { background: rgba(30,110,30,0.2) !important; color: #0a5a0a !important; font-weight: 600; }
-[data-theme="light"] .menu-label { color: #6a4820 !important; font-weight: 700; opacity: 1 !important; }
-[data-theme="light"] .brand-name { color: #1a1208 !important; }
-[data-theme="light"] .brand-sub  { color: #6a4820 !important; }
-[data-theme="light"] nav ul li a { opacity: 1 !important; color: #1a1208 !important; }
-[data-theme="light"] nav ul li a svg { color: #3a2a10 !important; opacity: 1 !important; }
-[data-theme="light"] .btn-primary { background: var(--amber-400) !important; color: #fff !important; border-color: var(--amber-400) !important; }
-[data-theme="light"] .btn-ghost   { color: var(--text-secondary) !important; border-color: var(--color-border-md) !important; }
-[data-theme="light"] .btn-ghost:hover { background: var(--color-surface-3) !important; }
-[data-theme="light"] .btn-secondary { color: var(--text-primary) !important; border-color: var(--color-border-md) !important; }
+[data-theme="light"] table th { background: #f5f5f5 !important; color: var(--text-secondary) !important; }
+[data-theme="light"] table td { color: var(--text-primary) !important; background: #ffffff; }
+[data-theme="light"] tbody tr:hover td { background: #f8f5f0 !important; }
+[data-theme="light"] .table-wrapper { background: #ffffff !important; }
+[data-theme="light"] .stat-card { background: #ffffff !important; border: 1px solid rgba(101,70,40,0.14) !important; }
+[data-theme="light"] label, [data-theme="light"] .form-label { color: var(--text-secondary) !important; }
+[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3 { color: var(--text-primary) !important; }
+[data-theme="light"] p, [data-theme="light"] span, [data-theme="light"] div { color: inherit; }
+[data-theme="light"] .card-title { color: var(--text-secondary) !important; font-weight: 700 !important; }
+/* Sidebar oscuro con texto claro — contraste intencional sidebar / contenido */
+[data-theme="light"] .sidebar { background: #253532 !important; }
+[data-theme="light"] .menu-item a { color: #c8d8d5 !important; font-weight: 500; opacity: 1 !important; }
+[data-theme="light"] .menu-item a:hover { background: rgba(255,255,255,0.18) !important; color: #ffffff !important; }
+[data-theme="light"] .menu-item a.active { background: #ffffff !important; color: #253532 !important; font-weight: 700; border-left-color: #4aaa4a !important; border-radius: 0 6px 6px 0 !important; margin-right: 8px !important; }
+[data-theme="light"] .menu-label { color: #7aaa9e !important; font-weight: 700; opacity: 1 !important; }
+[data-theme="light"] .brand-name { color: #ffffff !important; }
+[data-theme="light"] .brand-sub  { color: #7aaa9e !important; }
+[data-theme="light"] nav ul li a { opacity: 1 !important; color: #c8d8d5 !important; }
+[data-theme="light"] nav ul li a svg { color: #7aaa9e !important; opacity: 1 !important; }
+[data-theme="light"] .btn-primary   { background: var(--amber-500) !important; color: #fff !important; border-color: var(--amber-500) !important; }
+[data-theme="light"] .btn-primary:hover { background: var(--amber-400) !important; border-color: var(--amber-400) !important; }
+[data-theme="light"] .btn-ghost    { background: #ffffff !important; color: var(--text-secondary) !important; border-color: rgba(0,0,0,0.18) !important; }
+[data-theme="light"] .btn-ghost:hover { background: #f0f0ee !important; color: var(--text-primary) !important; }
+[data-theme="light"] .btn-secondary { background: #ffffff !important; color: var(--text-primary) !important; border-color: rgba(0,0,0,0.18) !important; }
+[data-theme="light"] .btn-secondary:hover { background: #f0f0ee !important; }
+[data-theme="light"] .btn-danger   { background: #c0392b !important; color: #ffffff !important; border-color: #c0392b !important; }
+[data-theme="light"] .btn-danger:hover { background: #a93226 !important; border-color: #a93226 !important; }
 [data-theme="light"] .stat-card { background: var(--color-surface) !important; }
 [data-theme="light"] .stat-value { color: var(--text-primary) !important; }
 [data-theme="light"] .stat-label { color: var(--text-muted) !important; }
 [data-theme="light"] .card-title { color: var(--text-secondary) !important; }
 [data-theme="light"] .page-subtitle { color: var(--text-muted) !important; }
-[data-theme="light"] .badge-amber { background: rgba(30,110,30,0.15) !important; color: var(--color-success) !important; border-color: rgba(30,110,30,0.3) !important; }
-[data-theme="light"] .badge-muted { background: rgba(0,0,0,0.08) !important; color: var(--text-secondary) !important; }
+[data-theme="light"] .badge-amber { background: rgba(46,122,46,0.12) !important; color: var(--color-success) !important; border-color: rgba(46,122,46,0.28) !important; }
+[data-theme="light"] .badge-muted { background: rgba(37,53,50,0.08) !important; color: var(--text-secondary) !important; }
 [data-theme="light"] .pagination a { color: var(--text-secondary) !important; border-color: var(--color-border-md) !important; }
-[data-theme="light"] .pagination a.active { background: var(--amber-400) !important; color: #fff !important; }
+[data-theme="light"] .pagination a.active { background: var(--amber-500) !important; color: #fff !important; }
 [data-theme="light"] .estado-alerta { color: var(--color-danger) !important; }
 [data-theme="light"] .estado-ok     { color: var(--color-success) !important; }
-[data-theme="light"] .alert-warning { background: rgba(138,80,16,0.1) !important; border-color: rgba(138,80,16,0.3) !important; color: #6a3800 !important; }
-[data-theme="light"] .alert-danger  { background: rgba(160,32,32,0.1) !important; border-color: rgba(160,32,32,0.3) !important; color: #8a0000 !important; }
+[data-theme="light"] .alert-warning { background: rgba(138,96,0,0.08) !important; border-color: rgba(138,96,0,0.28) !important; color: #6a4800 !important; }
+[data-theme="light"] .alert-danger  { background: rgba(184,50,50,0.08) !important; border-color: rgba(184,50,50,0.28) !important; color: #8a1a1a !important; }
 [data-theme="light"] .search-box input { color: var(--text-primary) !important; }
+[data-theme="light"] .notacata-button, [data-theme="light"] .details-button,
+[data-theme="light"] .batch-button, [data-theme="light"] .custom-button, [data-theme="light"] .boton,
+[data-theme="light"] #verDetalles, [data-theme="light"] #verNotas, [data-theme="light"] #nuevoLote,
+[data-theme="light"] #nuevo, [data-theme="light"] #limpiar, [data-theme="light"] #verReceta,
+[data-theme="light"] #verDetalle, [data-theme="light"] #cambiarestado, [data-theme="light"] #nuevoUser {
+  background: #ffffff !important; color: var(--text-primary) !important;
+  border-color: rgba(0,0,0,0.18) !important;
+}
+[data-theme="light"] #borrar, [data-theme="light"] #borrarUser, [data-theme="light"] #borrarFila {
+  background: #c0392b !important; color: #ffffff !important; border-color: #c0392b !important;
+}
 [data-theme="light"] .tab.active { color: var(--color-success) !important; border-bottom-color: var(--color-success) !important; }
 [data-theme="light"] .tab { color: var(--text-muted) !important; }
 [data-theme="light"] .tab:hover { color: var(--text-primary) !important; }
@@ -362,7 +386,7 @@ h3 { font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 0.75rem;
 }
 
@@ -461,6 +485,32 @@ td:first-child input[type="checkbox"] { margin: 0; }
 .badge-danger  { background: rgba(217,96,96,0.12);  color: var(--color-danger); }
 .badge-info    { background: rgba(74,144,217,0.12); color: var(--color-info); }
 .badge-muted   { background: rgba(255,240,200,0.06); color: var(--text-muted); }
+
+/* ── Badges por estilo — MODO OSCURO (neon glow) ─────────────────────────── */
+.badge-estilo-ipa      { background: rgba(255,107,0,0.18);   color: #FF6B00; border: 1px solid rgba(255,107,0,0.5);   box-shadow: 0 0 8px rgba(255,107,0,0.35); }
+.badge-estilo-stout    { background: rgba(30,100,255,0.18);   color: #4D9FFF; border: 1px solid rgba(30,100,255,0.5);   box-shadow: 0 0 8px rgba(30,100,255,0.35); }
+.badge-estilo-porter   { background: rgba(220,30,60,0.18);   color: #FF2244; border: 1px solid rgba(220,30,60,0.5);   box-shadow: 0 0 8px rgba(220,30,60,0.35); }
+.badge-estilo-lager    { background: rgba(255,214,0,0.15);   color: #FFD600; border: 1px solid rgba(255,214,0,0.45);  box-shadow: 0 0 8px rgba(255,214,0,0.30); }
+.badge-estilo-pale     { background: rgba(57,255,20,0.12);   color: #39FF14; border: 1px solid rgba(57,255,20,0.4);   box-shadow: 0 0 8px rgba(57,255,20,0.30); }
+.badge-estilo-wheat    { background: rgba(255,0,180,0.15);   color: #FF00B4; border: 1px solid rgba(255,0,180,0.45);  box-shadow: 0 0 8px rgba(255,0,180,0.30); }
+.badge-estilo-sour     { background: rgba(170,0,255,0.18);   color: #CC00FF; border: 1px solid rgba(170,0,255,0.5);   box-shadow: 0 0 8px rgba(170,0,255,0.35); }
+.badge-estilo-red      { background: rgba(255,7,58,0.18);    color: #FF073A; border: 1px solid rgba(255,7,58,0.5);    box-shadow: 0 0 8px rgba(255,7,58,0.35); }
+.badge-estilo-saison   { background: rgba(0,229,255,0.15);   color: #00E5FF; border: 1px solid rgba(0,229,255,0.45);  box-shadow: 0 0 8px rgba(0,229,255,0.30); }
+.badge-estilo-imperial { background: rgba(98,0,234,0.20);    color: #A040FF; border: 1px solid rgba(98,0,234,0.5);    box-shadow: 0 0 8px rgba(98,0,234,0.35); }
+.badge-estilo-default  { background: rgba(0,230,118,0.15);   color: #00E676; border: 1px solid rgba(0,230,118,0.45);  box-shadow: 0 0 8px rgba(0,230,118,0.30); }
+
+/* ── Badges por estilo — MODO CLARO (sólido vibrant, sin pasteles) ────────── */
+[data-theme="light"] .badge-estilo-ipa      { background: #d45000; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-stout    { background: #1a3a9f; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-porter   { background: #8b0000; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-lager    { background: #b8860b; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-pale     { background: #1a6e00; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-wheat    { background: #b5006a; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-sour     { background: #6200cc; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-red      { background: #cc0020; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-saison   { background: #007090; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-imperial { background: #3d0099; color: #ffffff; border: none; box-shadow: none; }
+[data-theme="light"] .badge-estilo-default  { background: #005c1e; color: #ffffff; border: none; box-shadow: none; }
 
 /* Estado limpieza fermentadores */
 .estado-ok   { color: var(--color-success); font-weight: 600; }
@@ -711,7 +761,7 @@ label, .form-label {
   display: block;
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin-bottom: 0.35rem;
   letter-spacing: 0.03em;
 }

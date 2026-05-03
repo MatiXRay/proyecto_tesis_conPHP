@@ -67,6 +67,6 @@ try {
     ]);
 
 } catch (PDOException $e) {
-    error_log('[Bialystok] Error al actualizar cata: ' . $e->getMessage());
+    error_log('[BRAUMEISTER] Error al actualizar cata: ' . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'Error al actualizar.']);
 }

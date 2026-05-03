@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
             } catch (PDOException $e) {
-                error_log('[Bialystok] Error en login: ' . $e->getMessage());
+                error_log('[BRAUMEISTER] Error en login: ' . $e->getMessage());
                 $general_err = 'Error interno. Intentá más tarde.';
             }
         }
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bialystok Brewing · Acceso</title>
+  <title>BRAUMEISTER · Acceso</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <div class="login-card">
     <div class="login-brand">
-      <h1>Bialystok Brewing</h1>
+      <h1>BRAUMEISTER</h1>
       <p>Sistema de gestión de producción</p>
     </div>
 

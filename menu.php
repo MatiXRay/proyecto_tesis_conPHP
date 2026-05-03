@@ -56,7 +56,7 @@ function menuItem(array $item, string $activo): string {
 ?>
 <aside id="sidebar" class="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-name">Bialystok Brewing</div>
+    <div class="brand-name">BRAUMEISTER</div>
     <div class="brand-sub">Sistema de Producción</div>
   </div>
 
@@ -86,15 +86,23 @@ function menuItem(array $item, string $activo): string {
                      background:var(--color-surface-2);border:1px solid var(--color-border-md);
                      border-radius:var(--radius-sm);cursor:pointer;color:var(--text-secondary);
                      font-size:.78rem;font-family:'DM Sans',sans-serif;transition:.2s">
-        <span id="tema-icon">☀️</span>
+        <span id="tema-icon" style="display:flex;align-items:center;width:18px;height:18px"></span>
         <span id="tema-label">Tema claro</span>
       </button>
     </div>
   </nav>
 </aside>
 
+<style>
+  /* Sol neón en modo oscuro */
+  #tema-icon svg.icon-sol { filter: drop-shadow(0 0 6px #FFD600) drop-shadow(0 0 12px #FF8C00); }
+</style>
+
 <script>
 (function() {
+  const SVG_SOL  = '<svg class="icon-sol" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD600" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>';
+  const SVG_LUNA = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
   const tema = localStorage.getItem('bialy-tema') || 'dark';
   document.documentElement.setAttribute('data-theme', tema);
   updateTemaBtn(tema);
@@ -103,8 +111,13 @@ function menuItem(array $item, string $activo): string {
     const icon  = document.getElementById('tema-icon');
     const label = document.getElementById('tema-label');
     if (!icon) return;
-    if (t === 'light') { icon.textContent = '🌙'; label.textContent = 'Tema oscuro'; }
-    else               { icon.textContent = '☀️'; label.textContent = 'Tema claro'; }
+    if (t === 'light') {
+      icon.innerHTML  = SVG_LUNA;
+      label.textContent = 'Tema oscuro';
+    } else {
+      icon.innerHTML  = SVG_SOL;
+      label.textContent = 'Tema claro';
+    }
   }
 
   window.toggleTema = function() {

@@ -54,7 +54,7 @@ try {
     $lotes = $stmt->fetchAll();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok lotes] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER lotes] ' . $ex->getMessage());
     $lotes = [];
     $total_registros = $total_paginas = 0;
 }
@@ -69,7 +69,7 @@ function urlPaginacion(int $p, string $search, string $orden): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lotes · Bialystok Brewing</title>
+  <title>Lotes · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -115,7 +115,7 @@ function urlPaginacion(int $p, string $search, string $orden): string {
       <button class="btn btn-ghost btn-sm" id="btnEditar">✎ Editar</button>
       <button class="btn btn-ghost btn-sm" id="btnComparar">⇄ Comparar fermentación</button>
       <button class="btn btn-secondary btn-sm" id="btnVerNotas">Notas de cata</button>
-      <button class="btn btn-secondary" id="btnVerDetalles">Ver detalles</button>
+      <button class="btn btn-secondary btn-sm" id="btnVerDetalles">Ver detalles</button>
     </div>
   </div>
 
@@ -161,7 +161,7 @@ function urlPaginacion(int $p, string $search, string $orden): string {
             <td style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--text-secondary);white-space:nowrap">
               <?= e(date('d/m/Y', strtotime($lote['fecha_elaboracion']))) ?>
             </td>
-            <td><span class="badge badge-amber"><?= e(strtoupper($lote['estilo'])) ?></span></td>
+            <td><span class="badge <?= badgeEstilo($lote['estilo']) ?>"><?= e(strtoupper($lote['estilo'])) ?></span></td>
             <td style="font-family:'DM Mono',monospace;font-size:.82rem"><?= e($lote['og'] ?? '—') ?></td>
             <td style="font-family:'DM Mono',monospace;font-size:.82rem"><?= e($lote['fg'] ?? '—') ?></td>
             <td style="font-family:'DM Mono',monospace;font-size:.82rem"><?= $lote['abv'] ? e($lote['abv']) . '%' : '—' ?></td>

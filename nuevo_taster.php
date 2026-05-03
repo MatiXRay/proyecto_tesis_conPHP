@@ -10,11 +10,10 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 // Si ya está logueado, redirigir según rol
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    $dest = match((int)($_SESSION['rol_id'] ?? 0)) {
-        1 => 'configuracion',
-        3 => 'panel_cata',
-        default => 'inicio'
-    };
+    $rol = (int)($_SESSION['rol_id'] ?? 0);
+    if ($rol === 1)      $dest = 'configuracion';
+    elseif ($rol === 3) $dest = 'panel_cata';
+    else                $dest = 'inicio';
     header('Location: ' . $dest);
     exit;
 }
@@ -39,7 +38,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crear perfil de taster · Bialystok Brewing</title>
+  <title>Crear perfil de taster · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -77,7 +76,7 @@ try {
 <body>
 <div class="wrap">
   <div class="box">
-    <div class="brand">Bialystok Brewing Co</div>
+    <div class="brand">BRAUMEISTER</div>
     <div class="title">Crear perfil de taster</div>
 
     <div class="form-group">

@@ -161,6 +161,6 @@ try {
 
 } catch (PDOException $ex) {
     $pdo->rollBack();
-    error_log('[Bialystok guardar_estilo] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER guardar_estilo] ' . $ex->getMessage());
     header('Location: anadir_receta?error=error_db');
 }

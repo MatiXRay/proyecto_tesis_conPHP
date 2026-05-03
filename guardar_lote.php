@@ -68,7 +68,7 @@ try {
     exit;
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok guardar_lote] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER guardar_lote] ' . $ex->getMessage());
     header('Location: anadir_lote?error=' . urlencode('Error al guardar el lote. Intentá de nuevo.'));
     exit;
 }

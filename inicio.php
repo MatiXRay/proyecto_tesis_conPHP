@@ -45,7 +45,7 @@ try {
         $diff = (new DateTime())->diff(new DateTime($ultimoReporteAgua));
         $alertaAgua = ($diff->y > 0 || $diff->m >= 2);
     } else {
-        $alertaAgua = true; // Nunca hubo reporte
+        $alertaAgua = true;
     }
 
     // Fermentadores
@@ -93,18 +93,56 @@ try {
         }
     } catch (Exception $e) { /* tabla puede no existir aún */ }
 
-    // Stats rápidas
+    // KPIs de producción actual
+    $lotes_activos = $pdo->query(
+        "SELECT COUNT(*) FROM lotes_cerveza
+         WHERE dia_envasado IS NULL AND fecha_elaboracion >= DATE_SUB(NOW(), INTERVAL 90 DAY)"
+    )->fetchColumn();
+
+    $litros_en_proceso = $pdo->query(
+        "SELECT COALESCE(SUM(litros_a_fermentador), 0) FROM lotes_cerveza
+         WHERE dia_envasado IS NULL AND fecha_elaboracion >= DATE_SUB(NOW(), INTERVAL 90 DAY)"
+    )->fetchColumn();
+
+    $litros_mes = $pdo->query(
+        "SELECT COALESCE(SUM(litros_envasados), 0) FROM lotes_cerveza
+         WHERE MONTH(dia_envasado) = MONTH(NOW()) AND YEAR(dia_envasado) = YEAR(NOW())"
+    )->fetchColumn();
+
+    $catas_pendientes = $pdo->query(
+        "SELECT COUNT(*) FROM lotes_cerveza
+         WHERE cata_habilitada = 1
+         AND id NOT IN (SELECT DISTINCT id_lote FROM notas_cata WHERE id_lote IS NOT NULL)"
+    )->fetchColumn();
+
+    // Detalle de lotes en fermentación activa
+    $stmt_activos = $pdo->prepare(
+        "SELECT lc.id, lc.numero_lote, lc.fecha_elaboracion, lc.litros_a_fermentador,
+                ec.nombre AS estilo, ec.duracion_dias,
+                f.nombre AS fermentador,
+                DATEDIFF(NOW(), lc.fecha_elaboracion) AS dias_transcurridos
+         FROM lotes_cerveza lc
+         LEFT JOIN estilos_cerveza ec ON lc.estilo_id = ec.id
+         LEFT JOIN fermentadores f ON lc.fermentador_id = f.id
+         WHERE lc.dia_envasado IS NULL AND lc.fecha_elaboracion >= DATE_SUB(NOW(), INTERVAL 90 DAY)
+         ORDER BY lc.fecha_elaboracion DESC"
+    );
+    $stmt_activos->execute();
+    $lotes_en_ferm = $stmt_activos->fetchAll();
+
+    // Stats generales
     $totalLotes    = $pdo->query("SELECT COUNT(*) FROM lotes_cerveza")->fetchColumn();
     $totalRecetas  = $pdo->query("SELECT COUNT(*) FROM estilos_cerveza")->fetchColumn();
     $totalFermen   = count($fermentadores);
     $totalCatas    = $pdo->query("SELECT COUNT(*) FROM notas_cata")->fetchColumn();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok inicio] ' . $ex->getMessage());
-    $fermentadores = $ultimosLotes = [];
+    error_log('[BRAUMEISTER inicio] ' . $ex->getMessage());
+    $fermentadores = $ultimosLotes = $lotes_en_ferm = [];
     $alertaAgua = false;
     $alertas_activas = [];
     $totalLotes = $totalRecetas = $totalFermen = $totalCatas = '—';
+    $lotes_activos = $litros_en_proceso = $litros_mes = $catas_pendientes = 0;
 }
 
 $nuevo_orden = ($orden === 'ASC') ? 'desc' : 'asc';
@@ -114,7 +152,7 @@ $nuevo_orden = ($orden === 'ASC') ? 'desc' : 'asc';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio · Bialystok Brewing</title>
+  <title>Inicio · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -130,7 +168,7 @@ $nuevo_orden = ($orden === 'ASC') ? 'desc' : 'asc';
   <div class="page-header fade-in">
     <div>
       <h1>Panel General</h1>
-      <p class="page-subtitle">Resumen de producción · Bialystok Brewing Co</p>
+      <p class="page-subtitle">Resumen de producción · BRAUMEISTER</p>
     </div>
   </div>
 
@@ -169,7 +207,68 @@ $nuevo_orden = ($orden === 'ASC') ? 'desc' : 'asc';
   </div>
   <?php endif; ?>
 
-  <!-- ── Stats ─────────────────────────────────────────────────────────────── -->
+  <!-- ── KPIs de producción actual ────────────────────────────────────────── -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem" class="fade-in">
+    <div class="stat-card" style="border-top:3px solid var(--color-success)">
+      <div class="stat-value" style="color:var(--color-success)"><?= (int)$lotes_activos ?></div>
+      <div class="stat-label">Lotes en fermentación</div>
+    </div>
+    <div class="stat-card" style="border-top:3px solid var(--text-amber)">
+      <div class="stat-value" style="color:var(--text-amber)"><?= number_format((float)$litros_en_proceso, 0) ?> L</div>
+      <div class="stat-label">Litros en proceso</div>
+    </div>
+    <div class="stat-card" style="border-top:3px solid #6c9bd2">
+      <div class="stat-value" style="color:#6c9bd2"><?= number_format((float)$litros_mes, 0) ?> L</div>
+      <div class="stat-label">Envasados este mes</div>
+    </div>
+    <div class="stat-card" style="border-top:3px solid <?= (int)$catas_pendientes > 0 ? 'var(--color-danger)' : 'var(--text-muted)' ?>">
+      <div class="stat-value" style="color:<?= (int)$catas_pendientes > 0 ? 'var(--color-danger)' : 'var(--text-muted)' ?>"><?= (int)$catas_pendientes ?></div>
+      <div class="stat-label">Catas pendientes</div>
+    </div>
+  </div>
+
+  <!-- ── Lotes en fermentación activa ──────────────────────────────────────── -->
+  <?php if (!empty($lotes_en_ferm)): ?>
+  <div class="card fade-in" style="margin-bottom:1rem">
+    <div class="card-title" style="margin-bottom:1rem">Producción activa</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem">
+      <?php foreach ($lotes_en_ferm as $lf):
+        $dias = (int)$lf['dias_transcurridos'];
+        $total = max(1, (int)($lf['duracion_dias'] ?? 14));
+        $pct = min(100, round($dias / $total * 100));
+        $color_barra = $pct >= 100 ? 'var(--color-danger)' : ($pct >= 75 ? 'var(--text-amber)' : 'var(--color-success)');
+      ?>
+      <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);padding:.9rem 1rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
+          <div>
+            <div style="font-weight:600;font-size:.9rem"><?= e($lf['numero_lote']) ?></div>
+            <div style="font-size:.75rem;color:var(--text-muted)"><?= e($lf['estilo'] ?? '—') ?></div>
+          </div>
+          <span class="badge" style="background:rgba(74,170,74,.15);color:var(--color-success);font-size:.7rem">
+            Fermentando
+          </span>
+        </div>
+        <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:.6rem">
+          <?= e($lf['fermentador'] ?? 'Sin fermentador') ?>
+          &nbsp;·&nbsp;
+          <?= $lf['litros_a_fermentador'] ? number_format((float)$lf['litros_a_fermentador'], 0).' L' : '—' ?>
+          &nbsp;·&nbsp;
+          Día <?= $dias ?>/<?= $total ?>
+        </div>
+        <div style="background:var(--color-border);border-radius:99px;height:6px;overflow:hidden">
+          <div style="width:<?= $pct ?>%;height:100%;background:<?= $color_barra ?>;border-radius:99px;transition:width .3s"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-top:.3rem">
+          <span><?= e(date('d/m/Y', strtotime($lf['fecha_elaboracion']))) ?></span>
+          <span><?= $pct ?>%<?= $pct >= 100 ? ' · Listo para envasar' : '' ?></span>
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <!-- ── Stats generales ───────────────────────────────────────────────────── -->
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem" class="fade-in">
     <div class="stat-card">
       <div class="stat-value"><?= e((string)$totalLotes) ?></div>
@@ -273,7 +372,7 @@ $nuevo_orden = ($orden === 'ASC') ? 'desc' : 'asc';
                 <?= e(date('d/m/Y', strtotime($lote['fecha_elaboracion']))) ?>
               </td>
               <td>
-                <span class="badge badge-amber"><?= e(strtoupper($lote['estilo'])) ?></span>
+                <span class="badge <?= badgeEstilo($lote['estilo']) ?>"><?= e(strtoupper($lote['estilo'])) ?></span>
               </td>
               <td style="color:var(--text-muted);font-size:.8rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
                 <?= e($lote['comentarios'] ?: '—') ?>

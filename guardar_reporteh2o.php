@@ -60,6 +60,6 @@ try {
     ]);
     header('Location: reportes_agua');
 } catch (PDOException $ex) {
-    error_log('[Bialystok guardar_h2o] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER guardar_h2o] ' . $ex->getMessage());
     header('Location: anadir_reporte_agua?error=error_db');
 }

@@ -116,7 +116,7 @@ try {
     $reportes_agua = $pdo->query("SELECT DISTINCT fecha FROM reportesagua ORDER BY fecha DESC")->fetchAll();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok anadir_detalles_lote] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER anadir_detalles_lote] ' . $ex->getMessage());
     header('Location: lotes?error=' . urlencode('Error al cargar los datos del lote.'));
     exit;
 }

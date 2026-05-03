@@ -90,6 +90,6 @@ try {
     }
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok config_update] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER config_update] ' . $ex->getMessage());
     echo json_encode(['success' => false, 'message' => 'Error de base de datos.']);
 }

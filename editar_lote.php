@@ -149,7 +149,8 @@ $lupulos_json = json_encode(array_map(fn($l)=>['id'=>(int)$l['id'],'label'=>$l['
       <div class="card-title">Parámetros vitales</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem">
         <?php foreach (['og'=>'OG','fg'=>'FG','ibuEsperado'=>'IBU','abvEsperado'=>'ABV','carbLevelEsperado'=>'Carb level'] as $name=>$label):
-          $dbcol = match($name) { 'ibuEsperado'=>'ibu','abvEsperado'=>'abv','carbLevelEsperado'=>'co2', default=>$name };
+          $map = ['ibuEsperado'=>'ibu','abvEsperado'=>'abv','carbLevelEsperado'=>'co2'];
+          $dbcol = isset($map[$name]) ? $map[$name] : $name;
         ?>
         <div class="form-group">
           <label class="form-label"><?= $label ?></label>

@@ -86,7 +86,7 @@ try {
     $stats_estilos = $stmt->fetchAll();
 
 } catch (PDOException $ex) {
-    error_log('[Bialystok panel_cata] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER panel_cata] ' . $ex->getMessage());
     $lotes = $mis_notas = $stats_estilos = [];
     $stats_usuario = null;
     $total_lotes = $total_dev = 0;
@@ -98,7 +98,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Cata · Bialystok Brewing</title>
+  <title>Panel de Cata · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
@@ -127,7 +127,7 @@ try {
   <div class="cata-header fade-in">
     <div>
       <div style="font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.2rem">
-        Bialystok Brewing Co
+        BRAUMEISTER
       </div>
       <h1 style="margin:0">Panel de Cata</h1>
     </div>
@@ -165,7 +165,7 @@ try {
             <td style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--text-secondary)">
               <?= e(date('d/m/Y', strtotime($lote['fecha_elaboracion']))) ?>
             </td>
-            <td><span class="badge badge-amber"><?= e(strtoupper($lote['nombre_estilo'])) ?></span></td>
+            <td><span class="badge <?= badgeEstilo($lote['nombre_estilo']) ?>"><?= e(strtoupper($lote['nombre_estilo'])) ?></span></td>
             <td>
               <a href="planilla_cata?id=<?= (int)$lote['id'] ?>"
                  class="btn btn-secondary btn-sm"
@@ -257,7 +257,7 @@ try {
             <td style="font-family:'DM Mono',monospace;font-weight:500">
               <?= e(strtoupper($nota['numero_lote'] ?? '')) ?>
             </td>
-            <td><span class="badge badge-muted"><?= e(strtoupper($nota['nombre_estilo'])) ?></span></td>
+            <td><span class="badge <?= badgeEstilo($nota['nombre_estilo']) ?>"><?= e(strtoupper($nota['nombre_estilo'])) ?></span></td>
             <td style="font-size:.82rem;color:var(--text-secondary)"><?= e($nota['origen_muestra'] ?? '—') ?></td>
             <td style="font-size:.82rem;color:var(--text-secondary)"><?= e($nota['tiempo_transcurrido'] ?? '—') ?></td>
             <td style="font-family:'DM Mono',monospace;color:var(--text-amber);font-weight:600">

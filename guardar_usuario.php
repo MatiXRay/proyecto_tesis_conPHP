@@ -83,7 +83,7 @@ try {
     if ($ex->getCode() == 23000) {
         echo json_encode(['status' => 'error', 'message' => 'El email o username ya existe.']);
     } else {
-        error_log('[Bialystok guardar_usuario] ' . $ex->getMessage());
+        error_log('[BRAUMEISTER guardar_usuario] ' . $ex->getMessage());
         echo json_encode(['status' => 'error', 'message' => 'Error al guardar el usuario.']);
     }
 }

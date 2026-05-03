@@ -55,7 +55,7 @@ function getPDO(): PDO {
         $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
     } catch (PDOException $e) {
         // Loguear el error real (nunca mostrarlo al usuario)
-        error_log('[Bialystok DB] Error de conexión: ' . $e->getMessage());
+        error_log('[BRAUMEISTER DB] Error de conexión: ' . $e->getMessage());
 
         if (defined('APP_DEBUG') && APP_DEBUG === true) {
             die('Error de conexión a la base de datos. Revisá los logs.');
@@ -75,6 +75,6 @@ function getPDO(): PDO {
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 $conn->set_charset(DB_CHARSET);
 if ($conn->connect_error) {
-    error_log('[Bialystok DB] mysqli error: ' . $conn->connect_error);
+    error_log('[BRAUMEISTER DB] mysqli error: ' . $conn->connect_error);
     die('Servicio temporalmente no disponible.');
 }

@@ -27,7 +27,7 @@ try {
     $stmt->execute([$like, $like]);
     $cepas = $stmt->fetchAll();
 } catch (PDOException $ex) {
-    error_log('[Bialystok levadura] ' . $ex->getMessage());
+    error_log('[BRAUMEISTER levadura] ' . $ex->getMessage());
     $cepas = []; $total = $total_paginas = 0;
 }
 ?>
@@ -36,7 +36,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Levadura · Bialystok Brewing</title>
+  <title>Levadura · BRAUMEISTER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bialy-design-system.css">
